@@ -15,11 +15,10 @@ class Solution {
     }
 }
 ```
-(2) stupid
+(2) stupid two pointer
 ```Kotlin
 class Solution {
     fun moveZeroes(nums: IntArray): Unit {
-        if(nums.size==1) return
         var slow = 0
         var fast = 0
         while(slow<nums.size && fast<nums.size){
