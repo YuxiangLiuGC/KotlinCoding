@@ -1,4 +1,5 @@
 ###### 283. Move Zeroes
+(1) Not in place
 ```Kotlin
 class Solution {
     fun moveZeroes(nums: IntArray): Unit {
@@ -13,4 +14,40 @@ class Solution {
         array.forEach { println(it) }
     }
 }
+```
+(2) stupid
+```Kotlin
+class Solution {
+    fun moveZeroes(nums: IntArray): Unit {
+        if(nums.size==1) return
+        var slow = 0
+        var fast = 0
+        while(slow<nums.size && fast<nums.size){
+            if(slow==fast){
+                if(nums[slow]!=0){
+                    slow++
+                    fast++
+                }else{
+                    fast++
+                }
+            }else if(nums[slow]==0 && nums[fast]!=0){
+                val temp = nums[slow]
+                nums[slow] = nums[fast]
+                nums[fast] = temp
+                slow++
+                fast++
+            }else if(nums[slow]!=0 && nums[fast]==0){
+                slow++
+                fast++
+            }else if(nums[slow]==0 && nums[fast]==0){
+                fast++
+            }else if(nums[slow]!=0 && nums[fast]!=0){
+                slow++
+                fast++
+            }
+            
+        }
+    }
+}
+```
 ```
