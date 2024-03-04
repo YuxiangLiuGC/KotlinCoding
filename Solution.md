@@ -67,3 +67,37 @@ class Solution {
     }
 }
 ```
+## 1299. Replace Elements with Greatest Element on Right Side
+(1) nested loop
+```kotlin
+class Solution {
+    fun replaceElements(arr: IntArray): IntArray {
+        for(i in arr.indices){
+            var j = i+1
+            var max = -1
+            while(j<arr.size){
+                if(arr[j]>max){
+                    max = arr[j]
+                }
+                j++
+            }
+            arr[i] = max
+        }
+        return arr
+    }
+}
+```
+(2) backward one loop
+```kotlin
+class Solution {
+    fun replaceElements(arr: IntArray): IntArray {
+        var max = -1
+        for(i in arr.lastIndex downTo 0){
+            val temp = arr[i]
+            arr[i] = max
+            max = maxOf(max, temp)
+        }
+        return arr
+    }
+}
+```
