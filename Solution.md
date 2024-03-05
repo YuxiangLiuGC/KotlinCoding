@@ -102,11 +102,11 @@ class Solution {
 }
 ```
 ## 1. Two Sum
+(1) nest loop
 ```kotlin
 class Solution {
     fun twoSum(nums: IntArray, target: Int): IntArray {
-       
-        for(i in 0 until nums.size){
+       for(i in 0 until nums.size){
             for(j in i+1 until nums.size){
                 if(nums[i]+nums[j]==target){
                     return intArrayOf(i, j)
@@ -116,4 +116,20 @@ class Solution {
         return IntArray(2)
     }
 }
+```
+(2) map
+```kotlin
+class Solution {
+    fun twoSum(nums: IntArray, target: Int): IntArray {
+       val map = mutableMapOf<Int, Int>()
+       for(i in nums.indices){
+           if(map.containsKey(nums[i])){
+               return intArrayOf(i, map.get(nums[i])!!)
+           }
+           map.put(target-nums[i],i)
+       }
+       return intArrayOf()
+    }
+}
+
 ```
